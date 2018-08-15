@@ -39,13 +39,14 @@ let fontList = fontStringNew(fontString).split("|");
 //console.log(fontList);
 
 const table = (fontList) => {
-    let fontListHtml = '<table><tr><th colspan="2">100 Interesting Google fonts favoured by me</th></tr>';
+    let fontListHtml = `<table><tr><th colspan="3">${fontList.length} fonts to compare</th></tr><tr><td></td><td></td><td></td></tr>`;
     for (i = 0; i < fontList.length; i++) {
         fontListHtml += `\
-        <tr style="font-family: '${fontList[i]}', sans-serif;">\
-        <td>${fontList[i]}</td>\
-        <td>${kittyText}</td>\
-    </tr>`
+            <tr style="font-family: '${fontList[i]}', sans-serif;">\
+                <td style="font-family:'Source Sans Pro', sans-serif;">${i+1}</td>\
+                <td>${fontList[i]}</td>\
+                <td>${kittyText}</td>\
+            </tr>`
 
     }
     return fontListHtml += "</table>";
