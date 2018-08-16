@@ -1,4 +1,3 @@
-
 /*
 1. Get some Google fonts:
     https://developers.google.com/fonts/docs/getting_started
@@ -9,13 +8,15 @@ let link = "https://fonts.googleapis.com/css?family=Tangerine|Caveat+Brush|Actor
 // Check: will it work with style appendix like |Tangerine:bold,bolditalic| ? I guess not.
 
 
-// Insert your text here:
-const kittyText = "Claw at curtains stretch and yawn nibble on tuna ignore human bite human hand sit by the fire annoy kitten brother with poking eat all the power cords soft kitty warm kitty little ball of furr. Meowing chowing and wowing favor packaging over toy. Stare at the wall, play with food and get confused by dust jump five feet high and sideways when a shadow moves. Eat the rubberband need to check on human, have not seen in an hour might be dead oh look, human is alive, hiss at human, feed me kitty poochy purr human is washing you why halp oh the horror flee scratch hiss bite."
+// Default Kitty Ipsum Text:
+const kittyText = "Claw at curtains stretch and yawn nibble on tuna ignore human bite human hand sit by the fire annoy kitten brother with poking eat all the power cords soft kitty warm kitty little ball of furr.<br>Meowing chowing and wowing favor packaging over toy. Stare at the wall, play with food and get confused by dust jump five feet high and sideways when a shadow moves. Eat the rubberband need to check on human, have not seen in an hour might be dead oh look, human is alive, hiss at human, feed me kitty poochy purr human is washing you why halp oh the horror flee scratch hiss bite."
 
 // Next version: You can insert a text on the html page or choose the default kitty text.
 
 
-const textField = document.querySelector("#textField");
+const codeSnippet = document.querySelector("#codeSnippet");
+const customTextField = document.querySelector("#customTextField");
+const fontTable = document.querySelector("#fontTable");
 
 let index = link.indexOf("family=") + 7;
 let splitedLink = link.slice(index);
@@ -52,4 +53,4 @@ const table = (fontList) => {
     return fontListHtml += "</table>";
 }
 
-textField.innerHTML = table(fontList);
+fontTable.innerHTML = table(fontList);

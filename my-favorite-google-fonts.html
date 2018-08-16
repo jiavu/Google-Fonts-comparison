@@ -17,13 +17,24 @@
                 --color-bg2: rgb(60, 60, 60);
                 --color-1: rgb(255, 99, 71, 0.7);
                 --color-2: tomato;
+                --color-google1: #d62d20;
+                --color-google2: #0057e7;
+                --color-google3: #008744;
+                --color-google4: #ffa700;
             }
             body {
-                background-color: var(--color-bg1, black);
-                font-family: 'Source Sans Pro', sans-serif;
+                background-color: var(--color-bg1, rgb(40, 40, 40));
+                font-family: Arial, Helvetica, sans-serif;
                 font-size: 100%;
-                color: var(--color-fg1, white);
+                color: var(--color-fg1, whitesmoke);
+                margin: 0;
                 padding: 20px;
+            }
+            header {
+                background-color: var(--color-2, tomato);
+                margin: 0 0 40px;
+                text-align: center;
+                padding: 2px 0;
             }
             div.center-content {
                 max-width: 1000px;
@@ -33,6 +44,12 @@
             }
             div.above-table {
                 padding: 0 30px 10px;
+                line-height: 1.5;
+            }
+            div.instructions {
+                border: 2px groove var(--color-fg1, whitesmoke);
+                margin: 30px 0;
+                padding: 15px;
             }
             li {
                 padding: 0 0 20px;
@@ -44,24 +61,25 @@
             }
             th {
                 height:50px;
-                background-color: tomato;
+                background-color: var(--color-2, tomato);
                 padding: 10px;
                 text-align: center;
                 font-size: 1.3em;
             }
             /* Zebra-stribed tables: */
-            tr:nth-child(odd) {background-color: var(--color-bg2, grey);}
+            tr:nth-child(odd) {background-color: var(--color-bg2, rgb(60, 60, 60));}
             td {
                 padding: 10px;
                 /*border-bottom: 1px solid #ddd;*/
             }
             tr:hover {
                 font-size: 1.5em;
-                background-color: var(--color-1, red);;
+                background-color: var(--color-1, rgb(255, 99, 71, 0.7));
+                box-shadow: 5px 5px 5px 5px hsl(0, 0%, 96%, 0.5);
             }
             a {
                 text-decoration: none;
-                color: var(--color-2, red);
+                color: var(--color-2, tomato);
             }
             a:hover {text-decoration-line: underline;}
 
@@ -69,20 +87,46 @@
 
     </head>
     <body>
+        <header>
+            <h1>Google Fonts Comparison</h1>
+        </header>
+
         <div class="center-content">
             <div class="above-table">
-                <h1>Google Fonts Comparison</h1>
-                <ol>
-                    <li>
-                        Go to <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a> and select some fonts you want to compare with each other.<br>
-                        You can collect them by clicking on "+".
-                    </li>
-                    <li>Copy the link of your families selection.</li>  <!-- It's not a link, it's a code snippet... Wil it work? -->
-                    <li>Paste here: __Eingabefeld__</li>
-                    <li>You can choose a Kitty Ipsum text or write your own text here: __Eingabefeld__</li>
-                </ol>
+                <p>.... yeah okay I know,
+                    <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>
+                     already offers every feature you find on this webpage and even some more, but isn't this one here much better?!
+                </p>
+                <div class="instructions">
+                <h3>Instructions:</h3>
+                    <ol>
+                        <li>
+                            Go to <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a> and select some fonts you want to compare with each other.<br>
+                            You can collect them by clicking on "+".
+                        </li>
+
+                        <li>Copy the link/code snippet of your families selection.</li>  <!-- It's not a link, it's a code snippet... Wil it work? -->
+
+                        <li>
+                            Paste here: <input type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet here..." required>
+                            <button type="submit">Submit</button>
+                        </li>
+
+                        <li>
+                            You can choose a Kitty Ipsum text or write your own text here:<br><br>
+                            <label for="kitty-ipsum">
+                                <input id="kitty-ipsum" type="radio" name="Text example" checked>Kitty Ipsum
+                            </label><br>
+                            <label for="custom-text">
+                                <input id="custom-text" type="radio" name="Text example">Your own text:
+                                <input type="text" name="custom text field" id="customTextField" placeholder="Insert your text here...">
+                            </label>                        
+                        </li>
+
+                    </ol>
+                </div>
             </div>     
-            <div id="textField"></div>
+            <div id="fontTable"></div>
         </div>
 
         <script src="my-favorite-google-fonts.js"></script>
