@@ -26,6 +26,7 @@
                 background-color: var(--color-bg1, rgb(40, 40, 40));
                 font-family: Arial, Helvetica, sans-serif;
                 font-size: 100%;
+                font-weight: 200;       /* 400 is default. */
                 color: var(--color-fg1, whitesmoke);
                 margin: 0;
                 padding: 20px;
@@ -72,7 +73,7 @@
                 padding: 10px;
                 /*border-bottom: 1px solid #ddd;*/
             }
-            tr:hover {
+            tr:active {
                 font-size: 1.5em;
                 background-color: var(--color-1, rgb(255, 99, 71, 0.7));
                 box-shadow: 5px 5px 5px 5px hsl(0, 0%, 96%, 0.5);
@@ -82,6 +83,19 @@
                 color: var(--color-2, tomato);
             }
             a:hover {text-decoration-line: underline;}
+            .code-snippet-entry {
+                width: 90%;
+                height: 30px;
+                margin: 10px;
+                padding: 5px;
+                font-size: 1.3em;
+            }
+            .custom-text-entry {
+                width: 90%;
+                margin: 10px;
+                padding: 5px;
+                font-size: 1.1em;
+            }
 
         </style>
 
@@ -97,8 +111,9 @@
                     <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>
                      already offers every feature you find on this webpage and even some more, but isn't this one here much better?!
                 </p>
+
                 <div class="instructions">
-                <h3>Instructions:</h3>
+                    <h3>Instructions:</h3>
                     <ol>
                         <li>
                             Go to <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a> and select some fonts you want to compare with each other.<br>
@@ -107,20 +122,35 @@
 
                         <li>Copy the link/code snippet of your families selection.</li>  <!-- It's not a link, it's a code snippet... Wil it work? -->
 
+                        <!-- Code Snippet and Submission -->
                         <li>
-                            Paste here: <input type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet here..." required>
-                            <button type="submit">Submit</button>
+                            <form action="">
+                                
+                                Paste here:
+                                <input class="code-snippet-entry" type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet here..." required>
+                                
+                                <button type="submit" id="submitCodeSnippet">Submit</button>
+                                <button type="button" id="test">Test</button>
+
+                            </form>
                         </li>
 
+                        <!-- Kitty Ipsum or custom text -->
+
                         <li>
-                            You can choose a Kitty Ipsum text or write your own text here:<br><br>
-                            <label for="kitty-ipsum">
-                                <input id="kitty-ipsum" type="radio" name="Text example" checked>Kitty Ipsum
-                            </label><br>
-                            <label for="custom-text">
-                                <input id="custom-text" type="radio" name="Text example">Your own text:
-                                <input type="text" name="custom text field" id="customTextField" placeholder="Insert your text here...">
-                            </label>                        
+                            <form action="">
+                                You can choose a Kitty Ipsum text or write your own text here:<br><br>
+
+                                <label for="kitty-ipsum">
+                                    <input type="radio" name="Text example" value="kitty ipsum text" checked>Kitty Ipsum (default)       <!-- 1. Radiobutton -->
+                                </label><br>
+
+                                <label for="custom-text">
+                                    <input type="radio" name="Text example" value="custom text">Your own text:<br>             <!-- 2. Radiobutton -->
+
+                                    <textarea class="custom-text-entry" name="custom text field" id="customTextField" cols="30" rows="10" placeholder="Insert your text here..."></textarea>
+                                </label>
+                            </form>
                         </li>
 
                     </ol>
