@@ -83,12 +83,17 @@
                 color: var(--color-2, tomato);
             }
             a:hover {text-decoration-line: underline;}
+
+            div.buttons {
+                width: 90%;
+                margin-left: 10px;
+            }
             .code-snippet-entry {
                 width: 90%;
                 height: 30px;
                 margin: 10px;
                 padding: 5px;
-                font-size: 1.3em;
+                font-size: 0.9em;
             }
             .custom-text-entry {
                 width: 90%;
@@ -107,7 +112,7 @@
 
         <div class="center-content">
             <div class="above-table">
-                <p>.... yeah okay I know,
+                <p>.... yeah I know,
                     <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>
                      already offers every feature you find on this webpage and even some more, but isn't this one here much better?!
                 </p>
@@ -125,13 +130,14 @@
                         <!-- Code Snippet and Submission -->
                         <li>
                             <form action="">
-                                
                                 Paste here:
                                 <input class="code-snippet-entry" type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet here..." required>
                                 
-                                <button type="submit" id="submitCodeSnippet">Submit</button>
-                                <button type="button" id="test">Test</button>
-
+                                <div class="buttons">
+                                    <button type="submit" id="submitCodeSnippet">Submit</button>
+                                    <button type="button" id="test">Test</button>
+                                    <button type="reset" style="float:right;">Reset</button>
+                                </div>
                             </form>
                         </li>
 
