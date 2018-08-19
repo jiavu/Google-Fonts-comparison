@@ -5,7 +5,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link href="https://fonts.googleapis.com/css?family=Tangerine|Caveat+Brush|Actor|Advent+Pro|Alegreya+Sans+SC|Allerta+Stencil|Anaheim|Antic|Archivo|Arimo|Assistant|Averia+Sans+Libre|Barlow|Belleza|Bubbler+One|Buda:300|Cabin|Cambay|Cantarell|Carrois+Gothic|Catamaran|Caudex|Chau+Philomene+One|Cuprum|Cutive+Mono|Didact+Gothic|Duru+Sans|East+Sea+Dokdo|Economica|Encode+Sans+Condensed|Expletus+Sans|Fauna+One|Forum|Fresca|Gafata|Galdeano|Gothic+A1|Harmattan|Heebo|Hind|Hind+Siliguri|Hind+Vadodara|IM+Fell+DW+Pica+SC|IM+Fell+Great+Primer+SC|Jaldi|Julee|Karla|Kreon|Lateef|Mada|Mallanna|Mandali|Marcellus|Marmelad|Martel+Sans|Mate+SC|Mirza|Molengo|Mukta+Mahee|Muli|NTR|Nanum+Gothic+Coding|News+Cycle|Nova+Flat|Numans|Open+Sans|Overpass|Oxygen|PT+Sans+Narrow|Padauk|Palanquin|Pavanam|Pontano+Sans|Proza+Libre|Questrial|Quicksand|Rajdhani|Reem+Kufi|Roboto|Ropa+Sans|Rosario|Rubik|Ruthie|Saira+Semi+Condensed|Sarala|Scada|Shanti|Slabo+13px|Source+Sans+Pro|Spinnaker|Sree+Krushnadevaraya|Sriracha|Tajawal|Telex|Tenor+Sans|Text+Me+One|Trykker|Unna|Varela+Round|Yantramanav|Lato|Montserrat" rel="stylesheet">
+        <link id="googleFontsStylesheet" rel="stylesheet">
+
         <title>My favorite Google fonts</title>
 
         <style>
@@ -84,6 +85,17 @@
             }
             a:hover {text-decoration-line: underline;}
 
+            div.code-example {
+                background-color: hsl(0, 0%, 75%);
+                color: black;
+                line-height: 1.1;
+                font-family: 'Roboto Mono', 'Lucida Console', monospace; /* or serif as web safe fallback font */
+                font-size: 0.7em;
+                padding: 10px;
+                margin: 10px;
+                width: 80%;
+                border: 2px inset;
+            }
             div.buttons {
                 width: 90%;
                 margin-left: 10px;
@@ -93,7 +105,8 @@
                 height: 30px;
                 margin: 10px;
                 padding: 5px;
-                font-size: 0.9em;
+                font-size: 0.8em;
+                font-family: 'Roboto Mono', 'Lucida Console', monospace; /* or serif as web safe fallback font */
             }
             .custom-text-entry {
                 width: 90%;
@@ -122,20 +135,27 @@
                     <ol>
                         <li>
                             Go to <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a> and select some fonts you want to compare with each other.<br>
-                            You can collect them by clicking on "+".
+                            You can collect them by clicking on "+".<br>
+                            Please note: style appendix isn't supported yet. <!-- The appendix will be ignored later -->
                         </li>
 
-                        <li>Copy the link/code snippet of your families selection.</li>  <!-- It's not a link, it's a code snippet... Wil it work? -->
+                        <li>
+                            Copy the whole code snippet of your font families selection or just the url link of <i>href=</i>.<br>
+                            The code snippet looks something like this:<br>
+                            <div class="code-example">
+                                &lt;link href="https://fonts.googleapis.com/css?family=Indie+Flower|Quicksand|Slabo+27px" rel="stylesheet"&gt;
+                            </div>
+                        </li>
 
                         <!-- Code Snippet and Submission -->
                         <li>
                             <form action="">
                                 Paste here:
-                                <input class="code-snippet-entry" type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet here..." required>
+                                <input class="code-snippet-entry" type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet or link here..." required>
                                 
                                 <div class="buttons">
-                                    <button type="submit" id="submitCodeSnippet">Submit</button>
-                                    <button type="button" id="test">Test</button>
+                                    <!-- <button type="submit" id="submitCodeSnippet">Submit</button> -->
+                                    <button type="button" id="submitCodeSnippet">Submit</button>
                                     <button type="reset" style="float:right;">Reset</button>
                                 </div>
                             </form>
@@ -155,7 +175,10 @@
                                     <input type="radio" name="Text example" value="custom text">Your own text:<br>             <!-- 2. Radiobutton -->
 
                                     <textarea class="custom-text-entry" name="custom text field" id="customTextField" cols="30" rows="10" placeholder="Insert your text here..."></textarea>
-                                </label>
+                                </label><br>
+                                <div class="buttons">
+                                    <button type="reset" style="float:right;">Reset</button>
+                            </div>
                             </form>
                         </li>
 
@@ -168,4 +191,8 @@
         <script src="my-favorite-google-fonts.js"></script>
     </body>
 
+<!--
+My 102 favorites:
+<link href="https://fonts.googleapis.com/css?family=Tangerine|Caveat+Brush|Actor|Advent+Pro|Alegreya+Sans+SC|Allerta+Stencil|Anaheim|Antic|Archivo|Arimo|Assistant|Averia+Sans+Libre|Barlow|Belleza|Bubbler+One|Buda:300|Cabin|Cambay|Cantarell|Carrois+Gothic|Catamaran|Caudex|Chau+Philomene+One|Cuprum|Cutive+Mono|Didact+Gothic|Duru+Sans|East+Sea+Dokdo|Economica|Encode+Sans+Condensed|Expletus+Sans|Fauna+One|Forum|Fresca|Gafata|Galdeano|Gothic+A1|Harmattan|Heebo|Hind|Hind+Siliguri|Hind+Vadodara|IM+Fell+DW+Pica+SC|IM+Fell+Great+Primer+SC|Jaldi|Julee|Karla|Kreon|Lateef|Mada|Mallanna|Mandali|Marcellus|Marmelad|Martel+Sans|Mate+SC|Mirza|Molengo|Mukta+Mahee|Muli|NTR|Nanum+Gothic+Coding|News+Cycle|Nova+Flat|Numans|Open+Sans|Overpass|Oxygen|PT+Sans+Narrow|Padauk|Palanquin|Pavanam|Pontano+Sans|Proza+Libre|Questrial|Quicksand|Rajdhani|Reem+Kufi|Roboto|Ropa+Sans|Rosario|Rubik|Ruthie|Saira+Semi+Condensed|Sarala|Scada|Shanti|Slabo+13px|Source+Sans+Pro|Spinnaker|Sree+Krushnadevaraya|Sriracha|Tajawal|Telex|Tenor+Sans|Text+Me+One|Trykker|Unna|Varela+Round|Yantramanav|Lato|Montserrat" rel="stylesheet">
+-->
 </html>

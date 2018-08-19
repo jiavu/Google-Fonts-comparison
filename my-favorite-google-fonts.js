@@ -1,50 +1,73 @@
 /*
-1. Get some Google fonts:
+Get some Google fonts:
     https://developers.google.com/fonts/docs/getting_started
 
-2. Insert your Google fonts selection link here!: */
-let link = href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans|Playfair+Display|Poppins|Raleway";
+Example of a Google Fonts link */
+let link = href="https://fonts.googleapis.com/css?family=Indie+Flower|Quicksand|Slabo+27px"
 
 // Default Kitty Ipsum Text:
 const kittyText = "Claw at curtains stretch and yawn nibble on tuna ignore human bite human hand sit by the fire annoy kitten brother with poking eat all the power cords soft kitty warm kitty little ball of furr.<br>Meowing chowing and wowing favor packaging over toy. Stare at the wall, play with food and get confused by dust jump five feet high and sideways when a shadow moves. Eat the rubberband need to check on human, have not seen in an hour might be dead oh look, human is alive, hiss at human, feed me kitty poochy purr human is washing you why halp oh the horror flee scratch hiss bite."
 
 // Selecting page elements:
 const codeSnippetField = document.querySelector("#codeSnippet");
-const submitCodeSnippet = document.querySelector("#submitCodeSnippet");
+/* const submitCodeSnippet = document.querySelector("#submitCodeSnippet"); */
 const customTextField = document.querySelector("#customTextField");
 const fontTable = document.querySelector("#fontTable");
 
 
 function processCodeSnippet() {
     const codeSnippet = codeSnippetField.value;
-    $("head").append(codeSnippet);
     
-    // 1. slices the font selection out of the code snippet
+    // 1.1 slices the link for the href attribute in <link> element of head:
+    let hrefLinkIndex1 = codeSnippet.indexOf("https://");
+    let hrefLink = codeSnippet.slice(hrefLinkIndex1);
+    let hrefLinkIndex2 = hrefLink.indexOf('"');
+    hrefLinkIndex2 = (hrefLinkIndex2 == -1)? Infinity : hrefLinkIndex2;
+    hrefLink = hrefLink.slice(0, hrefLinkIndex2);
+    console.log("hrefLink = " + hrefLink);
+    document.getElementById("googleFontsStylesheet").href = hrefLink;
+
+    // 1.2 slices the font selection out of the code snippet
     let index = codeSnippet.indexOf("family=") + 7;
     let slicedLink = codeSnippet.slice(index);
     let index2 = slicedLink.indexOf("&");
-    index2 = (index2 == -1) ? slicedLink.indexOf('"') : index2;
+    
+    if (index2 == -1) {
+        index2 = slicedLink.indexOf('"');
+        if (index2 == -1) {
+            index2 = Infinity;
+        }
+    }
     fontString = slicedLink.slice(0, index2);
 
 
     // 2. replaces all "+" with spaces
     let fontStringNew = (fontString) => {
         let fontStringNew = "";
+        let faultyFonts = 0;
+        let fontError;
         for (let i = 0; i < fontString.length; i++) {
             if (fontString[i] == "+") {
                 fontStringNew += " ";
+            } else if (fontString[i] == ":") {
+                // delete part from ":"" to "|"" but let "|"" exist:
+                // start from fontString[i] and search for the next "|".
+                // remove string between fontString[i] and index of next "|".
+                alert("Style appendix is not supported (yet) !");
+                faultyFonts += 1;
+                fontError = true;
             } else {
                 fontStringNew += fontString[i];
             }
         }
+        if (fontError) { alert(faultyFonts + " font(s) won't be shown in their own font style.") }
         return fontStringNew;
     }
 
-    // 3. selects all fonts in the final fontList by spliting the selection by "|"s in the string.
-    console.log(fontStringNew(fontString));
+    // 3. safes all fonts to a final fontList by splitting the selection by "|"s in the string.
+    /* console.log(fontStringNew(fontString)); */
     let fontList = fontStringNew(fontString).split("|");
     console.log(fontList);
-
 
     // 4. writes the list in html.
     const table = (fontList) => {
@@ -63,36 +86,32 @@ function processCodeSnippet() {
 
     // 5. writes html code to html element (<div>)
     fontTable.innerHTML = table(fontList);
+    fontTable.scrollIntoView();
 }
 
 
 
-
-
-
 // submitCodeSnippet.addEventListener("click", processCodeSnippet); or:
-document.getElementById("test").onclick = function() {processCodeSnippet()};
+document.getElementById("submitCodeSnippet").onclick = function() {processCodeSnippet()};
 
 /*
 My 102 favorite fonts are:
 "https://fonts.googleapis.com/css?family=Tangerine|Caveat+Brush|Actor|Advent+Pro|Alegreya+Sans+SC|Allerta+Stencil|Anaheim|Antic|Archivo|Arimo|Assistant|Averia+Sans+Libre|Barlow|Belleza|Bubbler+One|Buda:300|Cabin|Cambay|Cantarell|Carrois+Gothic|Catamaran|Caudex|Chau+Philomene+One|Cuprum|Cutive+Mono|Didact+Gothic|Duru+Sans|East+Sea+Dokdo|Economica|Encode+Sans+Condensed|Expletus+Sans|Fauna+One|Forum|Fresca|Gafata|Galdeano|Gothic+A1|Harmattan|Heebo|Hind|Hind+Siliguri|Hind+Vadodara|IM+Fell+DW+Pica+SC|IM+Fell+Great+Primer+SC|Jaldi|Julee|Karla|Kreon|Lateef|Mada|Mallanna|Mandali|Marcellus|Marmelad|Martel+Sans|Mate+SC|Mirza|Molengo|Mukta+Mahee|Muli|NTR|Nanum+Gothic+Coding|News+Cycle|Nova+Flat|Numans|Open+Sans|Overpass|Oxygen|PT+Sans+Narrow|Padauk|Palanquin|Pavanam|Pontano+Sans|Proza+Libre|Questrial|Quicksand|Rajdhani|Reem+Kufi|Roboto|Ropa+Sans|Rosario|Rubik|Ruthie|Saira+Semi+Condensed|Sarala|Scada|Shanti|Slabo+13px|Source+Sans+Pro|Spinnaker|Sree+Krushnadevaraya|Sriracha|Tajawal|Telex|Tenor+Sans|Text+Me+One|Trykker|Unna|Varela+Round|Yantramanav|Lato|Montserrat"
+
+Oh, soo wonderful:
+<link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Amatic+SC|Cookie|Courgette|Dancing+Script|Great+Vibes|Indie+Flower|Kaushan+Script|Lora|Satisfy|Shadows+Into+Light" rel="stylesheet">
 */
+
 
 /*
 To do:
-- Check: will it work with style appendix like |Tangerine:bold,bolditalic| ? I guess not.
-- The font selection has to become an element of <head> in the .html file.
-    To create an element in head:
-    v = document.createElement(elementName)     // e. g. let v = document.createElement("link");
-    elementName.attribute = "value"         // e. g.  v.id = "vlkj"; v.href = "content"; v.rel = "stylesheet";
-    document.head.appendChild()             // e. g. document.head.appendChild(v);
+- If radio button with name "Text example" === value "kitty ipsum text": id "customTextField" disabled...
+- If Text example === value "custom text": do not display kittyText but value of id "customTextField".
 
-    or... jQuery.... ($ is select)
-    $("head").append("<code>");
-    - ...
-
+- Handle Style appendix like |Tangerine:bold,bolditalic| (just cutout)
 - Error handling:
     - errors in the snippet like "family=" missing
-    - Typos in fonts, unknown font will rise fallback font.
-    - very fatal: more " and ' added to the snippet. It will dismantle the HTML code string for the table.
+    - Typos in fonts, unknown font will rise fallback font:
+        If font = default (Arial), write "Arial" in 2nd column and/or make the text example red.
+    (very fatal: more " and ' added to the snippet. It will dismantle the HTML code string for the table.)
 */
