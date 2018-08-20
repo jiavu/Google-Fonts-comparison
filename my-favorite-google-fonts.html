@@ -56,10 +56,11 @@
             li {
                 padding: 0 0 20px;
             }
-            table {
+            table.font-Table {
                     border-collapse:collapse;
                     text-align: left;
                     border: 60px;
+                    min-width: 100%;
             }
             th {
                 height:50px;
@@ -91,14 +92,23 @@
                 line-height: 1.1;
                 font-family: 'Roboto Mono', 'Lucida Console', monospace; /* or serif as web safe fallback font */
                 font-size: 0.7em;
-                padding: 10px;
+                padding: 9px;
                 margin: 10px;
-                width: 80%;
+                width: 90%;
+                box-sizing: border-box;
                 border: 2px inset;
             }
             div.buttons {
                 width: 90%;
                 margin-left: 10px;
+                box-sizing: border-box;
+            }
+            button {
+                font-size: 0.8em;
+                padding: 5px;
+                margin: 5px 0 0 10px;
+                border: 1px outset;
+                border-radius: 5px;
             }
             .code-snippet-entry {
                 width: 90%;
@@ -107,14 +117,21 @@
                 padding: 5px;
                 font-size: 0.8em;
                 font-family: 'Roboto Mono', 'Lucida Console', monospace; /* or serif as web safe fallback font */
+                box-sizing: border-box;
             }
             .custom-text-entry {
+                resize: none;
                 width: 90%;
                 margin: 10px;
                 padding: 5px;
                 font-size: 1.1em;
+                box-sizing: border-box;
             }
-
+            fieldset {
+                width: 90%;
+                margin: 10px;
+                box-sizing: border-box;
+            }
         </style>
 
     </head>
@@ -151,12 +168,13 @@
                         <li>
                             <form action="">
                                 Paste here:
-                                <input class="code-snippet-entry" type="text" name="Google Fonts code snippet" id="codeSnippet" placeholder="Paste code snippet or link here..." required>
+                                <input  type="text"  id="codeSnippet" class="code-snippet-entry" name="Google Fonts code snippet" placeholder="Paste your code snippet or link here..." required>
                                 
                                 <div class="buttons">
                                     <!-- <button type="submit" id="submitCodeSnippet">Submit</button> -->
-                                    <button type="button" id="submitCodeSnippet">Submit</button>
+                                    <button type="button" id="submitCodeSnippet" style="float:right;"><b>Submit</b></button>
                                     <button type="reset" style="float:right;">Reset</button>
+                                    <br>
                                 </div>
                             </form>
                         </li>
@@ -165,20 +183,22 @@
 
                         <li>
                             <form action="">
-                                You can choose a Kitty Ipsum text or write your own text here:<br><br>
+                                You can choose a Kitty Ipsum text or write your own text here:
+                                <fieldset>
+                                    <legend>Choose text</legend>
 
-                                <label for="kitty-ipsum">
-                                    <input type="radio" name="Text example" value="kitty ipsum text" checked>Kitty Ipsum (default)       <!-- 1. Radiobutton -->
-                                </label><br>
+                                    <label for="kitty-ipsum">
+                                        <input type="radio" name="selctTextExample" value="kitty ipsum text" checked>Kitty Ipsum (default)       <!-- 1. Radiobutton -->
+                                    </label><br>
 
-                                <label for="custom-text">
-                                    <input type="radio" name="Text example" value="custom text">Your own text:<br>             <!-- 2. Radiobutton -->
-
-                                    <textarea class="custom-text-entry" name="custom text field" id="customTextField" cols="30" rows="10" placeholder="Insert your text here..."></textarea>
-                                </label><br>
-                                <div class="buttons">
-                                    <button type="reset" style="float:right;">Reset</button>
-                            </div>
+                                    <label for="custom-text">
+                                        <input type="radio" name="selctTextExample" value="custom text" id="customText">Your own text:<br>             <!-- 2. Radiobutton -->
+                                        <textarea class="custom-text-entry" name="custom text field" id="customTextField" cols="30" rows="10" placeholder="Insert your text here..."></textarea>
+                                    </label><br>
+                                    <div class="buttons">
+                                        <button type="reset" style="float:right;">Reset</button>
+                                    </div>
+                            </fieldset>
                             </form>
                         </li>
 

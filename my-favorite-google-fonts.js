@@ -10,14 +10,17 @@ const kittyText = "Claw at curtains stretch and yawn nibble on tuna ignore human
 
 // Selecting page elements:
 const codeSnippetField = document.querySelector("#codeSnippet");
-/* const submitCodeSnippet = document.querySelector("#submitCodeSnippet"); */
+const submitCodeSnippet = document.querySelector("#submitCodeSnippet")
+const customText =document.querySelector("#customText");
 const customTextField = document.querySelector("#customTextField");
 const fontTable = document.querySelector("#fontTable");
+
+customTextField.disabled = true;
 
 
 function processCodeSnippet() {
     const codeSnippet = codeSnippetField.value;
-    
+   
     // 1.1 slices the link for the href attribute in <link> element of head:
     let hrefLinkIndex1 = codeSnippet.indexOf("https://");
     let hrefLink = codeSnippet.slice(hrefLinkIndex1);
@@ -68,16 +71,24 @@ function processCodeSnippet() {
     /* console.log(fontStringNew(fontString)); */
     let fontList = fontStringNew(fontString).split("|");
     console.log(fontList);
+    writeTable(fontList);
+}
 
-    // 4. writes the list in html.
+// 4. writes the list in html.
+function writeTable(fontList) {
+    let textExample;
+    if (document.getElementById("customText").checked) {
+        textExample = customTextField.value;
+    } else { textExample = kittyText}
+
     const table = (fontList) => {
-        let fontListHtml = `<table><tr><th colspan="3">${fontList.length} fonts to compare</th></tr><tr><td></td><td></td><td></td></tr>`;
+        let fontListHtml = `<table class="font-Table"><tr><th colspan="3">${fontList.length} fonts to compare</th></tr><tr><td></td><td></td><td></td></tr>`;
         for (i = 0; i < fontList.length; i++) {
             fontListHtml += `\
                 <tr style="font-family: '${fontList[i]}', sans-serif;">\
                     <td style="font-family:'Source Sans Pro', sans-serif;">${i+1}</td>\
                     <td>${fontList[i]}</td>\
-                    <td>${kittyText}</td>\
+                    <td>${textExample}</td>\
                 </tr>`
 
         }
@@ -89,10 +100,17 @@ function processCodeSnippet() {
     fontTable.scrollIntoView();
 }
 
+function selctTextExample() {
+    alert("BOOWW");
+    if (customText.checked) {
+        alert("checked");
+        customTextField.disabled = false;
 
+    } else { customTextField.disabled = true; }
+} 
 
-// submitCodeSnippet.addEventListener("click", processCodeSnippet); or:
-document.getElementById("submitCodeSnippet").onclick = function() {processCodeSnippet()};
+submitCodeSnippet.onclick = function() {processCodeSnippet()};
+customText.addEventListener("change", selctTextExample); // works only when activating the radio button??? When switching back, nothing happens
 
 /*
 My 102 favorite fonts are:
@@ -107,6 +125,8 @@ Oh, soo wonderful:
 To do:
 - If radio button with name "Text example" === value "kitty ipsum text": id "customTextField" disabled...
 - If Text example === value "custom text": do not display kittyText but value of id "customTextField".
+
+- textfield deactivate resizing.
 
 - Handle Style appendix like |Tangerine:bold,bolditalic| (just cutout)
 - Error handling:
