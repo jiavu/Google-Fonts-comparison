@@ -8,10 +8,13 @@ let link = href="https://fonts.googleapis.com/css?family=Indie+Flower|Quicksand|
 // Default Kitty Ipsum Text:
 const kittyText = "Claw at curtains stretch and yawn nibble on tuna ignore human bite human hand sit by the fire annoy kitten brother with poking eat all the power cords soft kitty warm kitty little ball of furr.<br>Meowing chowing and wowing favor packaging over toy. Stare at the wall, play with food and get confused by dust jump five feet high and sideways when a shadow moves. Eat the rubberband need to check on human, have not seen in an hour might be dead oh look, human is alive, hiss at human, feed me kitty poochy purr human is washing you why halp oh the horror flee scratch hiss bite."
 
+let fontList = [];
+
 // Selecting page elements:
 const codeSnippetField = document.querySelector("#codeSnippet");
 const submitCodeSnippet = document.querySelector("#submitCodeSnippet")
-const customText =document.querySelector("#customText");
+const kittyIpsumText = document.querySelector("#kittyIpsumText");
+const customText = document.querySelector("#customText");
 const customTextField = document.querySelector("#customTextField");
 const fontTable = document.querySelector("#fontTable");
 
@@ -69,7 +72,7 @@ function processCodeSnippet() {
 
     // 3. safes all fonts to a final fontList by splitting the selection by "|"s in the string.
     /* console.log(fontStringNew(fontString)); */
-    let fontList = fontStringNew(fontString).split("|");
+    fontList = fontStringNew(fontString).split("|");
     console.log(fontList);
     writeTable(fontList);
 }
@@ -77,20 +80,25 @@ function processCodeSnippet() {
 // 4. writes the list in html.
 function writeTable(fontList) {
     let textExample;
-    if (document.getElementById("customText").checked) {
-        textExample = customTextField.value;
+    if (customText.checked) {
+        if (!customTextField.value) {
+            textExample = "empty";
+        } else {
+            textExample = customTextField.value;
+        }
+        
     } else { textExample = kittyText}
 
     const table = (fontList) => {
         let fontListHtml = `<table class="font-Table"><tr><th colspan="3">${fontList.length} fonts to compare</th></tr><tr><td></td><td></td><td></td></tr>`;
         for (i = 0; i < fontList.length; i++) {
             fontListHtml += `\
-                <tr style="font-family: '${fontList[i]}', sans-serif;">\
+                <tr style="font-family: '${fontList[i]}'">\
                     <td style="font-family:'Source Sans Pro', sans-serif;">${i+1}</td>\
                     <td>${fontList[i]}</td>\
                     <td>${textExample}</td>\
                 </tr>`
-
+                // fallback (sans-serif) is deleted from <tr> now.
         }
         return fontListHtml += "</table>";
     }
@@ -101,16 +109,16 @@ function writeTable(fontList) {
 }
 
 function selctTextExample() {
-    alert("BOOWW");
     if (customText.checked) {
-        alert("checked");
         customTextField.disabled = false;
-
     } else { customTextField.disabled = true; }
 } 
 
+
 submitCodeSnippet.onclick = function() {processCodeSnippet()};
-customText.addEventListener("change", selctTextExample); // works only when activating the radio button??? When switching back, nothing happens
+customText.addEventListener("change", selctTextExample); // Wondering: If I don't add an EventListener for both radio buttons, it works only when activating the choosen radio button. When switching back, nothing happens.
+kittyIpsumText.addEventListener("change", selctTextExample);
+customTextField.addEventListener("change", writeTable(fontList)); // not necessary... Should 
 
 /*
 My 102 favorite fonts are:

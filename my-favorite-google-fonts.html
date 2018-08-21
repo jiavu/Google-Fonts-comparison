@@ -23,6 +23,7 @@
                 --color-google3: #008744;
                 --color-google4: #ffa700;
             }
+            
             body {
                 background-color: var(--color-bg1, rgb(40, 40, 40));
                 font-family: Arial, Helvetica, sans-serif;
@@ -38,20 +39,33 @@
                 text-align: center;
                 padding: 2px 0;
             }
+            p.footnote {
+                font-style: italic;
+                font-size: 0.8em;
+            }
             div.center-content {
                 max-width: 1000px;
-                padding: 0 12px;
+                min-width: 320px;
                 margin: auto;
-
             }
             div.above-table {
-                padding: 0 30px 10px;
+                padding: 0 10px;
                 line-height: 1.5;
             }
             div.instructions {
                 border: 2px groove var(--color-fg1, whitesmoke);
                 margin: 30px 0;
                 padding: 15px;
+            }
+            div.plus {
+                background-color: var(--color-2, tomato);
+                display: inline-block;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                text-align: center;
+                vertical-align: middle;
+                padding: 3px;
             }
             li {
                 padding: 0 0 20px;
@@ -97,6 +111,7 @@
                 width: 90%;
                 box-sizing: border-box;
                 border: 2px inset;
+                overflow: hidden;
             }
             div.buttons {
                 width: 90%;
@@ -137,22 +152,25 @@
     </head>
     <body>
         <header>
-            <h1>Google Fonts Comparison</h1>
+            <h1> Google Fonts Comparison</h1>
         </header>
 
         <div class="center-content">
             <div class="above-table">
-                <p>.... yeah I know,
-                    <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a>
-                     already offers every feature you find on this webpage and even some more, but isn't this one here much better?!
+                <p>.... Feature for comparing Google-Fonts.
+                    It's like <a href="https://fonts.google.com/" target="_blank">Google Fonts</a>,
+                     but much better!&#42;
+                </p>
+                <p class="footnote">
+                        &#42;Ok you are right, Google Fonts is better and provides more features for font comparison than this page.
                 </p>
 
                 <div class="instructions">
                     <h3>Instructions:</h3>
                     <ol>
                         <li>
-                            Go to <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a> and select some fonts you want to compare with each other.<br>
-                            You can collect them by clicking on "+".<br>
+                            Go to <a href="https://fonts.google.com/" target="_blank">Google Fonts</a> and select some fonts you want to compare with each other.<br>
+                            You can collect them by clicking on <div class="plus">+</div>.<br>
                             Please note: style appendix isn't supported yet. <!-- The appendix will be ignored later -->
                         </li>
 
@@ -164,31 +182,30 @@
                             </div>
                         </li>
 
+
+                        <form action="">
                         <!-- Code Snippet and Submission -->
-                        <li>
-                            <form action="">
+                            <li>
                                 Paste here:
-                                <input  type="text"  id="codeSnippet" class="code-snippet-entry" name="Google Fonts code snippet" placeholder="Paste your code snippet or link here..." required>
+                                <input  type="text" id="codeSnippet" class="code-snippet-entry" name="Google Fonts code snippet" placeholder="Paste your code snippet or link here..." required>
                                 
                                 <div class="buttons">
                                     <!-- <button type="submit" id="submitCodeSnippet">Submit</button> -->
-                                    <button type="button" id="submitCodeSnippet" style="float:right;"><b>Submit</b></button>
                                     <button type="reset" style="float:right;">Reset</button>
                                     <br>
                                 </div>
-                            </form>
-                        </li>
+                            </li>
+                        </form>
 
-                        <!-- Kitty Ipsum or custom text -->
-
-                        <li>
-                            <form action="">
+                            <!-- Kitty Ipsum or custom text -->
+                        <form action="">
+                            <li>
                                 You can choose a Kitty Ipsum text or write your own text here:
                                 <fieldset>
                                     <legend>Choose text</legend>
 
                                     <label for="kitty-ipsum">
-                                        <input type="radio" name="selctTextExample" value="kitty ipsum text" checked>Kitty Ipsum (default)       <!-- 1. Radiobutton -->
+                                        <input type="radio" name="selctTextExample" value="kitty ipsum text" id="kittyIpsumText" checked>Kitty Ipsum (default)       <!-- 1. Radiobutton -->
                                     </label><br>
 
                                     <label for="custom-text">
@@ -198,9 +215,13 @@
                                     <div class="buttons">
                                         <button type="reset" style="float:right;">Reset</button>
                                     </div>
-                            </fieldset>
-                            </form>
-                        </li>
+                                </fieldset>
+                            </li>
+                            <div class="buttons">
+                                <button type="button" id="submitCodeSnippet" style="float:right;"><b>Submit</b></button>
+                            </div>
+                            <br>
+                        </form>
 
                     </ol>
                 </div>
