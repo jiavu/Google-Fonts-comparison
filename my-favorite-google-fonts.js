@@ -7,7 +7,7 @@ let link = href="https://fonts.googleapis.com/css?family=Indie+Flower|Quicksand|
 
 // Default Kitty Ipsum Text:
 const kittyText = "Claw at curtains stretch and yawn nibble on tuna ignore human bite human hand sit by the fire annoy kitten brother with poking eat all the power cords soft kitty warm kitty little ball of furr.<br>Meowing chowing and wowing favor packaging over toy. Stare at the wall, play with food and get confused by dust jump five feet high and sideways when a shadow moves. Eat the rubberband need to check on human, have not seen in an hour might be dead oh look, human is alive, hiss at human, feed me kitty poochy purr human is washing you why halp oh the horror flee scratch hiss bite."
-
+const special = "Eines Tages ging ich an den Strand und schlief dort ein.<br><br>Als ich am nächsten Morgen aufwachte, befand ich mich auf einem Boot mitten auf dem Meer. Weit und breit kein anderer Mensch zu sehen. Kein anderes Schiff. Nur ich, der Himmel über mir, und die See unter mir.<br><br>Da kam ein kleiner Fisch vorbei und fragte mich, was ich auf dem Meer so alleine mache. Er fragte, ob ich mich verirrt habe und ob er mir helfen soll, den Weg zu finden.<br><br>Ich sagte: Nein du Hurensohn."
 let fontList = [];
 
 // Selecting page elements:
@@ -83,6 +83,8 @@ function writeTable(fontList) {
     if (customText.checked) {
         if (!customTextField.value) {
             textExample = "empty";
+        } else if (customTextField.value.trim().toLowerCase() == "special") {
+            textExample = special;
         } else {
             textExample = customTextField.value;
         }
